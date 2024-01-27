@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
+    <title>Ehehehe</title>
+    <link rel="icon" type="image/x-icon" href="static/icon.png">
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .bg {
+            /* The image used */
+            background-image: url("static/mainBackground.jpg");
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .main-text-style {
+            font-size: 2.5em;
+            text-align: center;
+        }
+
+        .topBar {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 150px;
+        }
+
+        .scrollBody {
+            background-color: #C93535;
+        }
+
+        .innerScroll {
+            padding: 10px;
+            background-color: #FEDEC5;
+            height: 510px;
+            font-family: 'Open Sans', sans-serif;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .primButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 4rem;
+            width: 10rem;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 1px 1px 5px black;
+            z-index: 9;
+        }
+
+        .secondaryButton {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 4rem;
+            width: 10rem;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 1px 1px 5px black;
+        }
+
+        .innerChild {
+            height: 100%;
+            width: 100%;
+            bottom: 0
+        }
+    </style>
+</head>
+
+<body class="bg">
+    <audio id="audioPlayer" controls loop hidden>
+        <source src="static/music.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+    </audio>
+    <div id="main_container" class="center">
+        <div onclick="OnScrollClick()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+            aria-expanded="false" aria-controls="collapseExample">
+            <img class="topBar" src="static/lunarScrollBar.png" alt="" style="height: 130px; width: 1000px;">
+        </div>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body scrollBody"
+                style="font-size: 2.5em; height: 14em; width: 19.1em; margin-left: auto; margin-right: auto;">
+                <div class="innerScroll">
+                    <p id="scrollText">
+                        Chào cậu, năm mới đến rồi, chúc cậu năm mới vui vẻ, tràn đầy hạnh phúc. Cậu có muốn nhận lì xì ko
+                        nè!
+                    </p> 
+                    <p id="secText"></p> 
+                    <strong><p id="thirdText"></p></strong>
+                    <div id="buttonContainer" class="buttonContainer innerChild">
+                        <button id="primButton" onmouseover="runaway(this)" onclick="runaway(this)" class="btn btn-success primButton">
+                            Có ạ
+                        </button>
+                        <button id="secButton" onclick="SecondaryButton()" class="btn btn-secondary secondaryButton">
+                            Ko, cám ơn
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div onclick="OnScrollClick()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+            aria-expanded="false" aria-controls="collapseExample">
+            <img class="footerBar" src="static/lunarScrollBar.png" alt="" style="height: 130px; width: 1000px;">
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script>
+        function OnScrollClick() {
+            var audio = document.getElementById('audioPlayer');
+            if (!audio) {
+                console.log('audio not found');
+                return;
+            }
+            audio.play();
+        }
+
+        function SecondaryButton() {
+            var primButton = document.getElementById('primButton')
+            var secButton = document.getElementById('secButton')
+            var scrollText = document.getElementById('scrollText')
+            var secText = document.getElementById('secText')
+            var thirdText = document.getElementById('thirdText')
+            primButton.hidden = true
+            secButton.hidden = true
+            scrollText.innerHTML = "Dù rất muốn lì xì nhưng ép nhiều quá thì ngượng ngùng đôi bên"
+            secText.innerHTML = "Nhân dịp năm mới, chúc cậu cùng gia đình nhiều sức khỏe, gặp may mắn trong cuộc sống và thuận lợi trong công việc"
+            thirdText.innerHTML = "CHÚC MỪNG NĂM MỚI &#129315;"
+        }   
+
+        function randomIntFromInterval(min, max) { // min and max included 
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+
+        function runaway(id) {
+            id.style.top = Math.round(randomIntFromInterval(0, 100)) + '%';
+            id.style.left = Math.round(randomIntFromInterval(0, 100)) + '%';
+        }
+
+    </script>
+</body>
+
+</html>
