@@ -304,3 +304,28 @@ body {
 .gif-2 {
     left: 120px;
 }
+
+.floating-marquee {
+    position: fixed;
+    top: 20px; /* Adjust position */
+    left: 0;
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    background: transparent; /* Semi-transparent background */
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+.marquee-content {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+}
